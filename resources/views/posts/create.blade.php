@@ -103,3 +103,20 @@
     </div>
     </div>
 @endsection
+
+@push('script')
+    <script src="https://cdn.tiny.cloud/1/rr6lb7gurqghw4gvks7rjm25l2nr8p3talrvgtvkotcwpgyp/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            tinymce.init({
+                selector: '#content',
+                plugins: 'print preview searchreplace autolink autosave save directionality visualblocks visualchars fullscreen image link media table hr anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help quickbars emoticons',
+                images_upload_url: '{{route('editor.upload',["_token" => csrf_token()])}}',
+                automatic_uploads: true,
+                toolbar_mode: 'floating',
+            });
+        });
+    </script>
+    @endpush

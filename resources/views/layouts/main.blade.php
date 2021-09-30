@@ -464,6 +464,8 @@
 <script src="{{asset('js/plugins.init.js')}}"></script><!--Note: All init js like tiny slider, counter, countdown, maintenance, lightbox, gallery, swiper slider, aos animation etc.-->
 <script src="{{asset('js/app.js')}}"></script><!--Note: All important javascript like page loader, menu, sticky menu, menu-toggler, one page menu etc. -->
 <script src="{{asset('js/main.js')}}"></script>
+
+@stack('script')
 </body>
 
 </html>

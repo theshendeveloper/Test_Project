@@ -15,3 +15,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/','PostController@index');
 Route::resource('posts','PostController')->only(['create','store','show']);
+Route::post('post-editor/upload-image','EditorImageUploadController')->name('editor.upload');
+

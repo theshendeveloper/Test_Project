@@ -6,11 +6,18 @@ class SlugService
 {
     public static function generate($string, $separator = '-', $limit = 8)
     {
-        $string = strtolower($string);
+        $string = mb_strtolower($string, "UTF-8");;
+
         $string = str_replace('‌',' ',$string);
-        $string = \Illuminate\Support\Str::words($string,$limit,'');
-        $string = mb_ereg_replace('([^آ-ی۰-۹a-z0-9]|-)+', $separator, $string);
-        $string = strtolower($string);
-        return trim($string, $separator);
+        $string = trim($string);
+
+
+        $string = preg_replace("/[^a-z0-9_\sءاأإآؤئبتثجحخدذرزسشصضطظعغفقكلمنهويةى]#u/", "", $string);
+
+        $string = preg_replace("/[\s-]+/", " ", $string);
+
+        $string = preg_replace("/[\s_]/", $separator, $string);
+
+        return $string;
     }
 }
