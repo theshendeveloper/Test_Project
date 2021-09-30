@@ -17,11 +17,6 @@ class Post extends Model
         return 'slug';
     }
 
-    public function setAttributeSlug($value)
-    {
-        $this->attributes['slug'] = SlugService::generate($value);
-    }
-
 
     public function path()
     {

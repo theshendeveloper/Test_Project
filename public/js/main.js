@@ -45,8 +45,17 @@ $(document).ready(function () {
     const videoSource = $("<source></source>");
 
     input.on('change','input[type=file]',function() {
-        const videoContainer = $(this).parent().next();
+        $('#video').parent().removeClass('is-invalid');
+        $('.size-info').removeClass('invalid-feedback');
+
+        const videoContainer = $(this).parent().siblings('.video_preview');
         const files = this.files || [];
+        if(files[0].size > 20480000){
+            videoContainer.fadeOut(600)
+            $('#video').parent().addClass('is-invalid');
+            $('.size-info').addClass('invalid-feedback');
+            return
+        }
         if (!files.length) return;
         const video =videoContainer.find('video');
         video.hide();

@@ -37,26 +37,27 @@
 <!-- Blog STart -->
 <section class="section">
     <div class="container">
-        <div class="row justify-content-center" style="text-align: center">
+        <div class="row justify-content-center mb-5" style="text-align: center">
             <a href="{{route('posts.create')}}" class="btn btn-success w-25">
                 افزودن پست
             </a>
         </div>
         <div class="row">
+            @foreach($posts as $post)
             <div class="col-lg-4 col-md-6 mb-4 pb-2">
                 <div class="card blog rounded border-0 shadow overflow-hidden">
                     <div class="position-relative">
-                        <img src="images/blog/01.jpg" class="card-img-top" alt="...">
+                        <img src="{{asset($post->banner)}}" class="card-img-top" alt="...">
                         <div class="overlay rounded-top bg-dark"></div>
                     </div>
                     <div class="card-body content">
-                        <h5><a href="javascript:void(0)" class="card-title title text-dark">برنامه های خود را به روش خود طراحی کنید</a></h5>
+                        <h5><a href="{{$post->path()}}" class="card-title title text-dark">{{$post->title}}</a></h5>
                         <div class="post-meta d-flex justify-content-between mt-3">
                             <ul class="list-unstyled mb-0">
                                 <li class="list-inline-item me-2 mb-0"><a href="javascript:void(0)" class="text-muted like"><i class="uil uil-heart me-1"></i>33</a></li>
                                 <li class="list-inline-item"><a href="javascript:void(0)" class="text-muted comments"><i class="uil uil-comment me-1"></i>08</a></li>
                             </ul>
-                            <a href="page-blog-detail.html" class="text-muted readmore">ادامه مطلب  <i class="uil uil-angle-left-b align-middle"></i></a>
+                            <a href="{{$post->path()}}" class="text-muted readmore">ادامه مطلب  <i class="uil uil-angle-left-b align-middle"></i></a>
                         </div>
                     </div>
                     <div class="author">
@@ -64,17 +65,20 @@
                         <small class="text-light date"><i class="uil uil-calendar-alt"></i> اردیبهشت 1400</small>
                     </div>
                 </div>
-            </div><!--end col-->
+            </div>
+        @endforeach
+                <!--end col-->
 
 
             <!-- PAGINATION START -->
             <div class="col-12">
-                <ul class="pagination justify-content-center mb-0">
-                    <li class="page-item"><a class="page-link" href="javascript:void(0)" aria-label="Previous">قبلی </a></li>
-                    <li class="page-item active"><a class="page-link" href="javascript:void(0)">1</a></li>
-                    <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
-                    <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
-                    <li class="page-item"><a class="page-link" href="javascript:void(0)" aria-label="Next">بعدی </a></li>
+                <ul class="pagination justify-content-center mt-3 mb-0">
+{{--                    {{$posts->links}}--}}
+                    {{--<li class="page-item"><a class="page-link" href="javascript:void(0)" aria-label="Previous">قبلی </a></li>--}}
+                    {{--<li class="page-item active"><a class="page-link" href="javascript:void(0)">1</a></li>--}}
+                    {{--<li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>--}}
+                    {{--<li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>--}}
+                    {{--<li class="page-item"><a class="page-link" href="javascript:void(0)" aria-label="Next">بعدی </a></li>--}}
                 </ul>
             </div><!--end col-->
             <!-- PAGINATION END -->

@@ -13,7 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::resource('posts','PostController')->only(['create','store']);
+Route::get('/','PostController@index');
+Route::resource('posts','PostController')->only(['create','store','show']);

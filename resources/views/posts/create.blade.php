@@ -42,8 +42,8 @@
                                 </div>
                             </div>
                             <span class="@error('banner') {{Str::contains($message,'۵') ? 'd-none' :'' }}@enderror text-center"
-                                  dir="rtl"><small>حداکثر حجم بنر ۵ مگابایت می باشد.
-                                </small>
+                                  dir="rtl"><strong style="font-size: .875rem;">حداکثر حجم بنر ۵ مگابایت می باشد.
+                                </strong>
                                 </span>
                             @error('banner')
                             <span class="invalid-feedback" role="alert">
@@ -63,24 +63,32 @@
                             @enderror
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group video_input">
                             <label for="video"
                                    class="col-form-label text-md-right">ویدئو</label>
 
                             <div class="form-control @error('video') is-invalid @enderror">
-                                <input class="@error('video') is-invalid @enderror" type="file"
-                                       name="video" accept="video/*">
+                                <input id="video" class="@error('video') is-invalid @enderror" type="file"
+                                       name="video" accept="video/mp4, video/mov, video/ogg">
                             </div>
-                            <span class="@error('video') {{Str::contains($message,'۲۰') ? 'd-none' :'' }}@enderror text-center"
-                                  dir="rtl"><small>حداکثر حجم بنر ۲۰ مگابایت می باشد.
-                                </small>
+                            <span class="size-info @error('video') {{Str::contains($message,'۲۰') ? 'd-none' :'' }}@enderror"
+                                  dir="rtl"><strong style="font-size: .875rem;">حداکثر حجم ویدئو ۲۰ مگابایت می باشد.
+                                </strong>
                                 </span>
                             @error('video')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                             @enderror
+                            <div class="video_preview" style="display: none;">
+                                <div class="progress" style="width: 300px;margin-top: 3rem;background: antiquewhite">
+                                    <div class="progress-bar" role="progressbar">
+                                        <span>0%</span>
+                                    </div>
+                                </div>
+                                <video class="mt-4" width="300" height="300" controls></video>
 
+                            </div>
                         </div>
                         <button class="btn btn-success my-5" type="submit">
                             افزودن پست
